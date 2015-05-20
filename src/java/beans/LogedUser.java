@@ -5,18 +5,35 @@
  */
 package beans;
 
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.event.ActionEvent;
 
 /**
  *
  * @author tomislav
  */
-@ManagedBean(name = "logedUser", eager = true)
+@ManagedBean(name = "logedUserX", eager = true)
 @SessionScoped
 public class LogedUser implements Serializable{
+    public static final String PROP_USER = "PROP_USER";
+    public static final String PROP_IME = "PROP_IME";
+    public static final String PROP_PREZIME = "PROP_PREZIME";
+    public static final String PROP_DRZAVA = "PROP_DRZAVA";
+    public static final String PROP_REGION = "PROP_REGION";
+    public static final String PROP_GRAD = "PROP_GRAD";
+    public static final String PROP_ULICA = "PROP_ULICA";
+    public static final String PROP_ULICA2 = "PROP_ULICA2";
+    public static final String PROP_JMB = "PROP_JMB";
+    public static final String PROP_TIP = "PROP_TIP";
+    public static final String PROP_LOGED = "PROP_LOGED";
+    public static final String PROP_PASSWORD = "PROP_PASSWORD";
+    public static final String PROP_MESSAGE = "PROP_MESSAGE";
+    public static final String PROP_ODJAVI = "PROP_ODJAVI";
+    public static final String PROP_MENU = "PROP_MENU";
+    public static final String PROP_CONTEXT = "PROP_CONTEXT";
+    public static final String PROP_ACTION = "PROP_ACTION";
 
     private final String MESSAGE = "Za nastavak rada potrebno je da se ulogujete";
     private String user = "";
@@ -36,24 +53,25 @@ public class LogedUser implements Serializable{
     private String menu;
     private String context;
     private String action;
+    private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     public String getPath() {
-        message = "Za nastavak rada potrebno je da se ulogujete";
-        loged = true;
-        tip = "guest";
-        if (user.equals("admin") && password.equals("admin")) {
-            tip = "administrator";
-            message = "Administrator, dobro došao!";
-        } else if (user.equals("korisnik") && password.equals("korisnik")) {
-            tip = "korisnik";
-            message = "Korisnik, dobro došao!";
+        setMessage("Za nastavak rada potrebno je da se ulogujete");
+        setLoged((Boolean) true);
+        setTip("guest");
+        if (getUser().equals("admin") && getPassword().equals("admin")) {
+            setTip("administrator");
+            setMessage("Administrator, dobro došao!");
+        } else if (getUser().equals("korisnik") && getPassword().equals("korisnik")) {
+            setTip("korisnik");
+            setMessage("Korisnik, dobro došao!");
         } else {
-            message = "Greška u logovanju";
-            tip = "guest";
-            loged = false;
+            setMessage("Greška u logovanju");
+            setTip("guest");
+            setLoged((Boolean) false);
         }
 
-        switch (tip) {
+        switch (getTip()) {
             case "administrator":
                 return "/index.xhtml";
             case "korisnik":
@@ -62,7 +80,7 @@ public class LogedUser implements Serializable{
                 return "index.xhtml";
         }
     }
-
+    
     public String getMessage() {
         return message;
     }
@@ -94,7 +112,7 @@ public class LogedUser implements Serializable{
     public void setPrezime(String prezime) {
         this.prezime = prezime;
     }
-
+            
     /**
      *
      * @return
@@ -143,8 +161,8 @@ public class LogedUser implements Serializable{
         return jmb;
     }
 
-    public void setJmb(long jmb) {
-        this.jmb = jmb;
+    public void setJmb(Long jmb) {
+        this.setJmb((Long) jmb);
     }
 
     public String getTip() {
@@ -164,15 +182,15 @@ public class LogedUser implements Serializable{
     }
 
     public boolean isLoged() {
-        return loged;
+        return getLoged();
     }
 
-    public void setLoged(boolean loged) {
-        this.loged = loged;
+    public void setLoged(Boolean loged) {
+        this.setLoged((Boolean) loged);
     }
 
     public String getMenu() {
-        switch (tip) {
+        switch (getTip()) {
             case "administrator":
                 menu = "/administracija/adminmenu.xhtml";
                 break;
@@ -199,19 +217,19 @@ public class LogedUser implements Serializable{
     }
 
     public String getLogout() {
-        message = MESSAGE;
-        this.loged = false;
-        odjavi = "index.xhtml";
-        return odjavi;
+        setMessage(MESSAGE);
+        this.setLoged((Boolean) false);
+        setOdjavi("index.xhtml");
+        return getOdjavi();
     }
 
     public void setLogout(String logout) {
-        this.odjavi = logout;
+        this.setOdjavi(logout);
     }
 
     public String getOdjavi() {
-        message = MESSAGE;
-        this.loged = false;
+        setMessage(MESSAGE);
+        this.setLoged((Boolean) false);
         odjavi = "index.xhtml";
         return odjavi;
     }
@@ -228,17 +246,12 @@ public class LogedUser implements Serializable{
         this.action = action;
     }
 
-    public String editAction() {
-        return "index.xhtml";
-    }
-    
-/*
-    //action listener event
-    public void attrListener(ActionEvent event) {
 
-        action = (String) event.getComponent().getAttributes().get("action");
-
+    /**
+     * @return the loged
+     */
+    public Boolean getLoged() {
+        return loged;
     }
-    
-    */
+
 }

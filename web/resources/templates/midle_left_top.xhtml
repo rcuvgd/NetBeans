@@ -13,12 +13,9 @@
 
     <h:body>
         <ui:composition>
-            
-            
-            <ui:insert name="menu">
-                
-                <ui:include src="#{logedUser.menu}"/>
-            </ui:insert>
+            <ui:insert name="menu">                
+                <ui:include src="./menu.xhtml"/>
+            </ui:insert>                       
             <!---->
         </ui:composition>
     </h:body>

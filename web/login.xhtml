@@ -24,6 +24,7 @@
                         <tr>
                             <td><h:commandButton disabled="#{logedUser.loged}" value="Login" action="#{logedUser.getPath}"/></td>
                             <td><h:commandButton disabled="#{logedUser.loged}" value="Reset" action="index"/>
+                                "#{logedUser.path='page'}"
                                 <h:commandButton disabled="#{!logedUser.loged}" value="Logout" action="#{logedUser.odjavi}"/></td> 
                         </tr>
                         <tr>
