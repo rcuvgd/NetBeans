@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <Resource id="Web_prodaja" type="javax.sql.DataSource">#Mon May 18 16:15:40 CEST 2015
+jdbcDriver=com.mysql.jdbc.Driver
+password=0112358
+userName=root
+jdbcUrl=jdbc\:mysql\://localhost\:3306/web_prodavnica?zeroDateTimeBehavior\=convertToNull
+</Resource>
+</resources>

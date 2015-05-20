@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUsersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_user}" for="user" />
+                    <h:inputText id="user" value="#{usersController.selected.user}" title="#{bundle.CreateUsersTitle_user}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_user}"/>
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_ime}" for="ime" />
+                    <h:inputText id="ime" value="#{usersController.selected.ime}" title="#{bundle.CreateUsersTitle_ime}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_ime}"/>
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_prezime}" for="prezime" />
+                    <h:inputText id="prezime" value="#{usersController.selected.prezime}" title="#{bundle.CreateUsersTitle_prezime}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_prezime}"/>
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_drzava}" for="drzava" />
+                    <h:inputText id="drzava" value="#{usersController.selected.drzava}" title="#{bundle.CreateUsersTitle_drzava}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_drzava}"/>
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_region}" for="region" />
+                    <h:inputText id="region" value="#{usersController.selected.region}" title="#{bundle.CreateUsersTitle_region}" />
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_grad}" for="grad" />
+                    <h:inputText id="grad" value="#{usersController.selected.grad}" title="#{bundle.CreateUsersTitle_grad}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_grad}"/>
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_ulica}" for="ulica" />
+                    <h:inputText id="ulica" value="#{usersController.selected.ulica}" title="#{bundle.CreateUsersTitle_ulica}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_ulica}"/>
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_ulica2}" for="ulica2" />
+                    <h:inputText id="ulica2" value="#{usersController.selected.ulica2}" title="#{bundle.CreateUsersTitle_ulica2}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_ulica2}"/>
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_jmb}" for="jmb" />
+                    <h:inputText id="jmb" value="#{usersController.selected.jmb}" title="#{bundle.CreateUsersTitle_jmb}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_jmb}"/>
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_tip}" for="tip" />
+                    <h:inputText id="tip" value="#{usersController.selected.tip}" title="#{bundle.CreateUsersTitle_tip}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_tip}"/>
+                    <h:outputLabel value="#{bundle.CreateUsersLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{usersController.selected.password}" title="#{bundle.CreateUsersTitle_password}" required="true" requiredMessage="#{bundle.CreateUsersRequiredMessage_password}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usersController.create}" value="#{bundle.CreateUsersSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{usersController.prepareList}" value="#{bundle.CreateUsersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUsersIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,87 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 17, 2015, 11:12:31 PM
+    Author     : tomislav
+*/
+
+
+.login {
+    border-style: solid;
+    border-width: 0px;
+}
+
+#page {
+    width: 940px;
+    margin: 0 auto;
+}
+
+.page_vertical{
+    width: 940px;
+    clear: both;
+}
+
+#header{
+    width:100%;   
+    border: red solid medium;
+}
+
+#footer{
+    width: 100%;
+    border: yellow solid 0px;
+    float:none;
+    background-color: #dddddd;
+    height: 30px;
+    text-align: center;
+}
+
+.footertext{
+    padding-top: 7px;
+    
+}
+
+.midle_left_horizontal{
+    border-style: solid;
+    border-width: 2px; 
+}
+
+.midle_horizontal{
+    border:green solid 0px;
+    float: left;
+}
+
+.midle_left{
+    width: 235px;
+}
+
+.midle_right{
+    height:100%;
+    width:693px;
+
+}
+
+.content{
+    <!--  -->
+    height:100%;
+    width:693px;
+
+}
+
+.login_items{
+    border-top: solid 0px;
+    border-bottom: solid 0px;
+    width: 100%;
+}
+
+<!-- Definisati izgled stavki administratorskog menija -->
+.menuadministracija{
+    
+}
+
+<!-- Definisati izgled stavki korisnickog menija -->
+.menuadministracija{
+    
+}

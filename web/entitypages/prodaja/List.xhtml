@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProdajaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProdajaEmpty}" rendered="#{prodajaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{prodajaController.items.rowCount > 0}">
+                    <h:outputText value="#{prodajaController.pagination.pageFirstItem + 1}..#{prodajaController.pagination.pageLastItem + 1}/#{prodajaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{prodajaController.previous}" value="#{bundle.Previous} #{prodajaController.pagination.pageSize}" rendered="#{prodajaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{prodajaController.next}" value="#{bundle.Next} #{prodajaController.pagination.pageSize}" rendered="#{prodajaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{prodajaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProdajaTitle_kolicina}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kolicina}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProdajaTitle_proizvod}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proizvod}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProdajaTitle_users}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.users}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{prodajaController.prepareView}" value="#{bundle.ListProdajaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{prodajaController.prepareEdit}" value="#{bundle.ListProdajaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{prodajaController.destroy}" value="#{bundle.ListProdajaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{prodajaController.prepareCreate}" value="#{bundle.ListProdajaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProdajaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

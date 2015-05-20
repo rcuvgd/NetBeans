@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <ui:composition><!---->
+            <div class="logovanje">
+                <h:form class="login">
+                    <table class="login_items">
+                        <tr>
+                            <td class = "tdata"><h:outputText id ="luser" value="Username:"/></td> 
+                            <td><h:inputText disabled="#{logedUser.loged}" id ="user" value="#{logedUser.user}"/></td>                            
+                        </tr>
+                        <tr> 
+                            <td class = "tdata"><h:outputText id ="lpassword" value="Password :"/></td>
+                            <td><h:inputSecret disabled="#{logedUser.loged}" id="password" value="#{logedUser.password}"/><br /></td>
+                        </tr>
+                        <tr>
+                            <td><h:commandButton disabled="#{logedUser.loged}" value="Login" action="#{logedUser.getPath}"/></td>
+                            <td><h:commandButton disabled="#{logedUser.loged}" value="Reset" action="index"/>
+                                <h:commandButton disabled="#{!logedUser.loged}" value="Logout" action="#{logedUser.odjavi}"/></td> 
+                        </tr>
+                        <tr>
+                            <td>
+                                
+                                
+                                <h:commandButton disabled="#{!logedUser.loged}" value="Logout" action="#{logedUser.action}"/>
+                                                                
+                                <!---->
+                            </td>
+                            <hr/><br/>
+                        </tr>
+                    </table>
+                    <hr/>
+                    <td><h:outputLabel value="#{logedUser.message}" ></h:outputLabel></td>
+                    <hr/><br/>
+                </h:form>
+            </div>
+        </ui:composition>
+    </h:body>
+</html>
